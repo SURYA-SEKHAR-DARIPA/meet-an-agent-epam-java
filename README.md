@@ -7,4 +7,5 @@ and write a program that:
 - Otherwise prints "Access denied".
 
 It is guaranteed that the input is not null.
+
 It is guaranteed that the secret password is not null or empty.
