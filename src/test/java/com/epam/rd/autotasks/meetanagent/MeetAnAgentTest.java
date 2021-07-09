@@ -48,7 +48,9 @@ public class MeetAnAgentTest {
     private static Stream<Arguments> getParameters() {
         return Stream.of(
                 Arguments.of(MeetAnAgent.password, "Hello, Agent"),
-                Arguments.of(MeetAnAgent.password + "a","Access is denied")
+                Arguments.of(MeetAnAgent.password + "a","Access denied"),
+                Arguments.of(MeetAnAgent.password + MeetAnAgent.password, "Access denied"),
+                Arguments.of("a"+ MeetAnAgent.password,"Access denied")
         );
     }
 }
