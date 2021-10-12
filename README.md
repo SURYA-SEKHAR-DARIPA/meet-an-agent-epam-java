@@ -14,3 +14,17 @@ and write a program that:
 Secret password is stored in `final static String password`.
 
 It is guaranteed that the input is not null.
+
+### Example
+
+---
+Input: `Swordfish`
+
+Output: `Hello, Agent`
+
+---
+Input: `bad password`
+
+Output: `Access denied`
+
+---
