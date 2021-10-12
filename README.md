@@ -12,4 +12,5 @@ and write a program that:
 - otherwise, prints "Access denied".
 
 Secret password is stored in `final static String password`.
+
 It is guaranteed that the input is not null.
