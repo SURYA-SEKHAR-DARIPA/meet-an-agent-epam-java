@@ -31,7 +31,7 @@ public class MeetAnAgentTest {
                         .execute(() -> MeetAnAgent.main(new String[]{}))
         );
 
-        assertEquals(expected, actual);
+        assertEquals(expected, actual.strip());
     }
 
     private static Stream<Arguments> getParameters() {
