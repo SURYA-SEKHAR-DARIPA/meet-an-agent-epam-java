@@ -7,23 +7,23 @@ Estimated workload of this exercise is _20 min_.
 ### Description
 Please, proceed to [MeetAnAgent](src/main/java/com/epam/rd/autotasks/meetanagent/MeetAnAgent.java) class
 and write a program that:
-- asks for an input string,
-- if input line equals to the secret password, prints "Hello, Agent",
+- asks for an input number,
+- if the input equals to the secret password number, prints "Hello, Agent",
 - otherwise, prints "Access denied".
 
-Secret password is stored in `final static String password`.
+Secret password is stored in `final static int password`.
 
 It is guaranteed that the input is not null.
 
 ### Example
 
 ---
-Input: `Swordfish`
+Input: `133976`
 
 Output: `Hello, Agent`
 
 ---
-Input: `bad password`
+Input: `711`
 
 Output: `Access denied`
 

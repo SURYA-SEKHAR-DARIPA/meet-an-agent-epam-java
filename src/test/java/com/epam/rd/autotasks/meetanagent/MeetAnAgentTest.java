@@ -1,8 +1,12 @@
 package com.epam.rd.autotasks.meetanagent;
 
+import static com.epam.rd.autotasks.meetanagent.MeetAnAgent.password;
+import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
+import static com.github.stefanbirkner.systemlambda.SystemLambda.withTextFromSystemIn;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.github.stefanbirkner.systemlambda.Statement;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -20,37 +24,22 @@ public class MeetAnAgentTest {
 
     @ParameterizedTest
     @MethodSource("getParameters")
-    public void correctPasswordTest(String userInput, String expected)
-    {
+    public void correctPasswordTest(int userInput, String expected) throws Exception {
 
-        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(bais);
+        String actual = tapSystemOut(
+                () -> withTextFromSystemIn(Integer.toString(userInput))
+                        .execute(() -> MeetAnAgent.main(new String[]{}))
+        );
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(baos);
-        System.setOut(printStream);
-
-        PrintStream defaultOut = System.out;
-        InputStream defaultIn = System.in;
-
-        try {
-            MeetAnAgent.main(new String[]{});
-            printStream.flush();
-            String actual = baos.toString().trim();
-            assertEquals(expected,actual);
-        }
-        finally {
-            System.setIn(defaultIn);
-            System.setOut(defaultOut);
-        }
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> getParameters() {
         return Stream.of(
-                Arguments.of(MeetAnAgent.password, "Hello, Agent"),
-                Arguments.of(MeetAnAgent.password + "a","Access denied"),
-                Arguments.of(MeetAnAgent.password + MeetAnAgent.password, "Access denied"),
-                Arguments.of("a"+ MeetAnAgent.password,"Access denied")
+                Arguments.of(password, "Hello, Agent"),
+                Arguments.of(password + 1, "Access denied"),
+                Arguments.of(password + password, "Access denied"),
+                Arguments.of(100 + password, "Access denied")
         );
     }
 }
