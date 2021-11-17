@@ -13,8 +13,6 @@ and write a program that:
 
 Secret password is stored in `final static int password`.
 
-It is guaranteed that the input is not null.
-
 ### Example
 
 ---
