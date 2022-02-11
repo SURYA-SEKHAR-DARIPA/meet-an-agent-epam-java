@@ -11,7 +11,7 @@ and write a program that:
 - if the input equals to the secret password number, prints "Hello, Agent",
 - otherwise, prints "Access denied".
 
-Secret password is stored in `final static int password`.
+Secret password is stored in `final static int PASSWORD`.
 
 ### Example
 
